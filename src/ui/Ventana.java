@@ -10,6 +10,7 @@ import java.awt.*;
 public class Ventana extends javax.swing.JFrame {
 
     int usableWidth, usableHeight;
+    TitleBar titleBar;
 
     // Constructor para la ventana
     public Ventana() {
@@ -29,5 +30,20 @@ public class Ventana extends javax.swing.JFrame {
         usableWidth = getWidth() - 2;
         usableHeight = getHeight() - 2;
 
+        // Creacion de paneles
+        titleBar = new TitleBar(this);
+
+        // Adicion de paneles
+        add(titleBar);
+
+    }
+
+    // Metodos
+    public int getUsableWidth() {
+        return usableWidth;
+    }
+
+    public int getUsableHeight() {
+        return usableHeight;
     }
 }

@@ -8,6 +8,7 @@ public class RoundPane extends javax.swing.JPanel {
 
     public RoundPane(Ventana ventana) {
         setSize(ventana.getWidth(), ventana.getHeight());
+        setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
     }
 
     @Override
