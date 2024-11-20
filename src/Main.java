@@ -1,4 +1,6 @@
-package ui;
+
+
+import ui.Ventana;
 
 public class Main {
     
