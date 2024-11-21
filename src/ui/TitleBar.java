@@ -83,6 +83,11 @@ public class TitleBar extends javax.swing.JPanel {
                     public void mouseEntered(MouseEvent e) {
                         isMouseIn = true;
                     }
+
+                    @Override
+                    public void mouseExited(MouseEvent e) {
+                        isMouseIn = false;
+                    }
                 });
             }
 
@@ -97,12 +102,10 @@ public class TitleBar extends javax.swing.JPanel {
                 
                 if (isMouseIn) {
                     g2.setColor(Colors.RED.brighter().brighter());
-                    g2.fill(circle);
-                    isMouseIn = false;
                 } else {
                     g2.setColor(getBackground());
-                    g2.fill(circle);
                 }
+                g2.fill(circle);
 
             }
         };

@@ -118,6 +118,7 @@ class CustomText extends javax.swing.JTextField {
         setSelectedTextColor(Colors.WHITE);
         setSelectionColor(Colors.DARK_GRAY);
         setForeground(Colors.WHITE);
+        setHorizontalAlignment(SwingConstants.CENTER);
         setBorder(BorderFactory.createEmptyBorder());
         setOpaque(false);
 
