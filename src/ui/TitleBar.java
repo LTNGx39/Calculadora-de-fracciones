@@ -30,24 +30,47 @@ public class TitleBar extends javax.swing.JPanel {
         setLayout(new GridBagLayout());
         setBackground(Colors.BLACK);
         setOpaque(false);
+        MouseAdapter drag = new MouseAdapter() {
 
-        // Configuracion de componentes
+            int mouseX, mouseY;
+
+            @Override
+            public void mousePressed(MouseEvent e) {
+                mouseX = e.getX();
+                mouseY = e.getY();
+            }
+
+            @Override
+            public void mouseDragged(MouseEvent e) {
+                int x = e.getXOnScreen() - mouseX;
+                int y = e.getYOnScreen() - mouseY;
+
+                ventana.setLocation(x, y);
+            } 
+        };
+        addMouseListener(drag);
+        addMouseMotionListener(drag);
+
+        // Configuracion de titulo
         title = new JLabel("Calculadora de fracciones");
         title.setPreferredSize(new Dimension(ventana.getUsableWidth() - 62, 22));
         title.setFont(new Font("Arial Nova", Font.BOLD, 16));
         title.setHorizontalAlignment(SwingConstants.CENTER);
         title.setForeground(Colors.WHITE);
 
+        // Configuracion del boton close
         close = new JButton() {
 
             boolean isMouseIn = false;
             {
+                // Configuraciones
                 setPreferredSize(new Dimension(22, 22));
                 setBackground(Colors.RED);
                 setFocusPainted(false);
                 setBorderPainted(false);
                 setContentAreaFilled(false);
 
+                // Listeners
                 addActionListener(new ActionListener() {
                     @Override
                     public void actionPerformed(ActionEvent e) {
