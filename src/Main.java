@@ -1,5 +1,3 @@
-
-
 import ui.Ventana;
 
 public class Main {

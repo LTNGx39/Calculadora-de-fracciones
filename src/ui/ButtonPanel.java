@@ -20,8 +20,9 @@ public class ButtonPanel extends javax.swing.JPanel {
         setPreferredSize(new Dimension(ventana.getUsableWidth(), (ventana.getUsableWidth() - 240) / 5 + 40));
         setMinimumSize(getPreferredSize());
         setMaximumSize(getPreferredSize());
-        setBorder(BorderFactory.createEmptyBorder(0, 40, 40, 40));
-        setLayout(new GridLayout(1, 5, 40, 40));
+        int borderSize = ventana.getWidth() / 16;
+        setBorder(BorderFactory.createEmptyBorder(0, borderSize, borderSize, borderSize));
+        setLayout(new GridLayout(1, 5, borderSize, borderSize));
         setBackground(ventana.getBackground());
 
         // Configuracion de componentes
