@@ -116,7 +116,7 @@ class CustomButton extends javax.swing.JButton {
         setFocusPainted(false);
         setBorderPainted(false);
         setContentAreaFilled(false);
-        setFont(new Font("Arial Nova", Font.BOLD, 48));
+        setFont(new Font("Arial Nova", Font.BOLD, ventana.getWidth() / 16));
         setForeground(Colors.WHITE);
 
         // Listeners

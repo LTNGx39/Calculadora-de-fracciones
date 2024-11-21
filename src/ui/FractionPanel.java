@@ -19,7 +19,8 @@ public class FractionPanel extends javax.swing.JPanel {
         this.ventana = ventana;
 
         // Configuracion del panel
-        setBorder(BorderFactory.createEmptyBorder(80, 100, 80, 100));
+        int borderSize = ventana.getWidth() / 16;
+        setBorder(BorderFactory.createEmptyBorder(borderSize * 2, borderSize * 5 / 2, borderSize * 2, borderSize * 5 / 2));
         setLayout(new GridBagLayout());
         setBackground(ventana.getBackground());
 
@@ -32,13 +33,13 @@ public class FractionPanel extends javax.swing.JPanel {
         d3 = new CustomText(ventana, "6", false);
 
         symbol = new JLabel("+");
-        symbol.setFont(new Font("Arial Nova", Font.BOLD, 42));
+        symbol.setFont(new Font("Arial Nova", Font.BOLD, ventana.getWidth() / 14));
         symbol.setHorizontalAlignment(SwingConstants.CENTER);
         symbol.setForeground(Colors.WHITE);
         symbol.setPreferredSize(getSize());
 
         equal = new JLabel("=");
-        equal.setFont(new Font("Arial Nova", Font.BOLD, 42));
+        equal.setFont(new Font("Arial Nova", Font.BOLD, ventana.getWidth() / 14));
         equal.setHorizontalAlignment(SwingConstants.CENTER);
         equal.setForeground(Colors.WHITE);
 
@@ -80,13 +81,13 @@ public class FractionPanel extends javax.swing.JPanel {
         gbc.gridx = 0;
         gbc.gridy = 1;
         // gbc.insets = none;
-        add(new Bar(), gbc);
+        add(new Bar(ventana), gbc);
 
         gbc.gridx = 2;
-        add(new Bar(), gbc);
+        add(new Bar(ventana), gbc);
 
         gbc.gridx = 4;
-        add(new Bar(), gbc);
+        add(new Bar(ventana), gbc);
 
         gbc.gridx = 0;
         gbc.gridy = 2;
@@ -115,7 +116,7 @@ class CustomText extends javax.swing.JTextField {
 
         super(text);
 
-        setFont(new Font("Arial Nova", Font.BOLD, 32));
+        setFont(new Font("Arial Nova", Font.BOLD, ventana.getWidth() / 20));
         setHorizontalAlignment(SwingConstants.CENTER);
 
         if (editable) {
@@ -172,9 +173,12 @@ class CustomText extends javax.swing.JTextField {
 
 class Bar extends javax.swing.JPanel {
 
-    public Bar() {
+    Ventana ventana;
+
+    public Bar(Ventana ventana) {
 
         super();
+        this.ventana = ventana;
         setOpaque(false);
 
     }
@@ -186,7 +190,8 @@ class Bar extends javax.swing.JPanel {
         Graphics2D g2 = (Graphics2D) g;
         g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
 
-        RoundRectangle2D bar = new RoundRectangle2D.Double(0, getHeight() / 2 - 5, getWidth(), 10, 10, 10);
+        int height = ventana.getWidth() / 64;
+        RoundRectangle2D bar = new RoundRectangle2D.Double(0, getHeight() / 2 - height / 2, getWidth(), height, height, height);
         g2.setColor(Colors.WHITE);
         g2.fill(bar);
 
