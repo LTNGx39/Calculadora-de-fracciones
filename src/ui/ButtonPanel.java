@@ -15,10 +15,10 @@ public class ButtonPanel extends javax.swing.JPanel {
         this.ventana = ventana;
 
         // Configuracion de panel
-        setPreferredSize(new Dimension(ventana.getUsableWidth(), (ventana.getUsableWidth() - 240) / 5 + 80));
+        setPreferredSize(new Dimension(ventana.getUsableWidth(), (ventana.getUsableWidth() - 240) / 5 + 40));
         setMinimumSize(getPreferredSize());
         setMaximumSize(getPreferredSize());
-        setBorder(BorderFactory.createEmptyBorder(40, 40, 40, 40));
+        setBorder(BorderFactory.createEmptyBorder(0, 40, 40, 40));
         setLayout(new GridLayout(1, 5, 40, 40));
         setBackground(ventana.getBackground());
 
@@ -47,7 +47,6 @@ class CustomButton extends javax.swing.JButton {
 
         super(title);
 
-        int side = ventana.getUsableWidth() - 240;
         setBackground(Colors.BLACK);
         setFocusPainted(false);
         setBorderPainted(false);
