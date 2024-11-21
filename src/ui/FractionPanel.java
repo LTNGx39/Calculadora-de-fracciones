@@ -2,6 +2,7 @@ package ui;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.RenderingHints.Key;
 import java.awt.event.*;
 import java.awt.event.KeyAdapter;
 import java.awt.geom.RoundRectangle2D;
@@ -126,8 +127,12 @@ class CustomText extends javax.swing.JTextField {
             public void keyTyped(KeyEvent e) {
 
                 char key = e.getKeyChar();
-                if (!Character.isDigit(key) || getText().length() >= 4) {
+                if (!Character.isDigit(key)) {
                     e.consume();
+                    System.err.println("Se ingreso un caracter no numerico");
+                } else if (getText().length() >= 4) {
+                    e.consume();
+                    System.err.println("Se ingreso un numero muy grande");
                 }
             }
         });
