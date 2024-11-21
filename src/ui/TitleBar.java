@@ -2,6 +2,8 @@ package ui;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.*;
+import java.awt.geom.Ellipse2D;
 import java.awt.geom.Rectangle2D;
 import java.awt.geom.RoundRectangle2D;
 
@@ -36,14 +38,51 @@ public class TitleBar extends javax.swing.JPanel {
         title.setHorizontalAlignment(SwingConstants.CENTER);
         title.setForeground(Colors.WHITE);
 
-        close = new JButton();
-        close.setPreferredSize(new Dimension(22, 22));
-        close.setBackground(Colors.RED);
-        close.setFocusPainted(false);
-        close.setBorderPainted(false);
-        close.setContentAreaFilled(false);
-        // Solo hasta implementar paint componet
-        close.setOpaque(true);
+        close = new JButton() {
+
+            boolean isMouseIn = false;
+            {
+                setPreferredSize(new Dimension(22, 22));
+                setBackground(Colors.RED);
+                setFocusPainted(false);
+                setBorderPainted(false);
+                setContentAreaFilled(false);
+
+                addActionListener(new ActionListener() {
+                    @Override
+                    public void actionPerformed(ActionEvent e) {
+                        System.exit(0);
+                    }
+                });
+
+                addMouseListener(new MouseAdapter() {
+                    @Override
+                    public void mouseEntered(MouseEvent e) {
+                        isMouseIn = true;
+                    }
+                });
+            }
+
+            @Override
+            public void paintComponent(Graphics g) {
+
+                super.paintComponent(g);
+                Graphics2D g2 = (Graphics2D) g;
+                g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
+
+                Ellipse2D circle = new Ellipse2D.Double(0, 0, 22, 22);
+                
+                if (isMouseIn) {
+                    g2.setColor(Colors.RED.brighter().brighter());
+                    g2.fill(circle);
+                    isMouseIn = false;
+                } else {
+                    g2.setColor(getBackground());
+                    g2.fill(circle);
+                }
+
+            }
+        };
 
         // Adicion de componentes
         GridBagConstraints gbc = new GridBagConstraints();
