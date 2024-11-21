@@ -32,16 +32,59 @@ public class ButtonPanel extends javax.swing.JPanel {
                     @Override
                     public void actionPerformed(ActionEvent e) {
 
-                        
+                        ventana.getFractionPanel().getSymbol().setText("+");
+                        ventana.repaint();
 
                     }
 
                 });
             }
         };
-        minus = new CustomButton(ventana, "−");
-        mult = new CustomButton(ventana, "×");
-        div = new CustomButton(ventana, "÷");
+        minus = new CustomButton(ventana, "−") {
+            {
+                addActionListener(new ActionListener() {
+                    
+                    @Override
+                    public void actionPerformed(ActionEvent e) {
+
+                        ventana.getFractionPanel().getSymbol().setText("−");
+                        ventana.repaint();
+
+                    }
+
+                });
+            }
+        };
+        mult = new CustomButton(ventana, "×") {
+            {
+                addActionListener(new ActionListener() {
+                    
+                    @Override
+                    public void actionPerformed(ActionEvent e) {
+
+                        ventana.getFractionPanel().getSymbol().setText("×");
+                        ventana.repaint();
+
+                    }
+
+                });
+            }
+        };
+        div = new CustomButton(ventana, "÷") {
+            {
+                addActionListener(new ActionListener() {
+                    
+                    @Override
+                    public void actionPerformed(ActionEvent e) {
+
+                        ventana.getFractionPanel().getSymbol().setText("÷");
+                        ventana.repaint();
+
+                    }
+
+                });
+            }
+        };
         file = new CustomButton(ventana, "F");
 
         // Adicion de componentes
@@ -67,19 +110,13 @@ class CustomButton extends javax.swing.JButton {
 
         super(title);
 
+        // Configuraciones
         setBackground(defaultColor);
         setFocusPainted(false);
         setBorderPainted(false);
         setContentAreaFilled(false);
         setFont(new Font("Arial Nova", Font.BOLD, 48));
         setForeground(Colors.WHITE);
-        
-        // Configuraciones
-        setPreferredSize(new Dimension(22, 22));
-        setBackground(Colors.BLACK);
-        setFocusPainted(false);
-        setBorderPainted(false);
-        setContentAreaFilled(false);
 
         // Listeners
         addMouseListener(new MouseAdapter() {

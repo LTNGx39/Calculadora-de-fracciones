@@ -11,7 +11,7 @@ public class FractionPanel extends javax.swing.JPanel {
 
     private Ventana ventana;
     private CustomText n1, d1, n2, d2, n3, d3;
-    private Label symbol, equal;
+    private JLabel symbol, equal;
 
     public FractionPanel(Ventana ventana) {
 
@@ -31,8 +31,16 @@ public class FractionPanel extends javax.swing.JPanel {
         d2 = new CustomText(ventana, "5", true);
         d3 = new CustomText(ventana, "6", false);
 
-        symbol = new Label("+");
-        equal = new Label("=");
+        symbol = new JLabel("+");
+        symbol.setFont(new Font("Arial Nova", Font.BOLD, 42));
+        symbol.setHorizontalAlignment(SwingConstants.CENTER);
+        symbol.setForeground(Colors.WHITE);
+        symbol.setPreferredSize(getSize());
+
+        equal = new JLabel("=");
+        equal.setFont(new Font("Arial Nova", Font.BOLD, 42));
+        equal.setHorizontalAlignment(SwingConstants.CENTER);
+        equal.setForeground(Colors.WHITE);
 
         // Adicion de componentes
         GridBagConstraints gbc = new GridBagConstraints();
@@ -91,6 +99,10 @@ public class FractionPanel extends javax.swing.JPanel {
         gbc.gridx = 4;
         add(d3, gbc);
 
+    }
+
+    public JLabel getSymbol() {
+        return symbol;
     }
 
 }
@@ -177,22 +189,6 @@ class Bar extends javax.swing.JPanel {
         RoundRectangle2D bar = new RoundRectangle2D.Double(0, getHeight() / 2 - 5, getWidth(), 10, 10, 10);
         g2.setColor(Colors.WHITE);
         g2.fill(bar);
-
-    }
-
-}
-
-// Clase Label
-
-class Label extends javax.swing.JLabel {
-
-    public Label(String text) {
-
-        super(text);
-
-        setFont(new Font("Arial Nova", Font.BOLD, 42));
-        setHorizontalAlignment(SwingConstants.CENTER);
-        setForeground(Colors.WHITE);
 
     }
 

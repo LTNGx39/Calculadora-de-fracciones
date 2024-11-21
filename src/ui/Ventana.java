@@ -52,4 +52,8 @@ public class Ventana extends javax.swing.JFrame {
     public int getUsableHeight() {
         return usableHeight;
     }
+
+    public FractionPanel getFractionPanel() {
+        return fractionPanel;
+    }
 }
