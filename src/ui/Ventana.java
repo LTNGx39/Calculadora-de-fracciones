@@ -9,8 +9,10 @@ import java.awt.*;
 
 public class Ventana extends javax.swing.JFrame {
 
-    int usableWidth, usableHeight;
-    TitleBar titleBar;
+    private int usableWidth, usableHeight;
+    private TitleBar titleBar;
+    private FractionPanel fractionPanel;
+    private ButtonPanel buttonPanel;
 
     // Constructor para la ventana
     public Ventana() {
@@ -32,9 +34,13 @@ public class Ventana extends javax.swing.JFrame {
 
         // Creacion de paneles
         titleBar = new TitleBar(this);
+        fractionPanel = new FractionPanel(this);
+        buttonPanel = new ButtonPanel(this);
 
         // Adicion de paneles
         add(titleBar);
+        add(fractionPanel);
+        add(buttonPanel);
 
     }
 

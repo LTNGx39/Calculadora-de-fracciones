@@ -2,12 +2,6 @@ package ui;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.Dimension;
-import java.awt.Font;
-import java.awt.Graphics2D;
-import java.awt.GridBagConstraints;
-import java.awt.GridBagLayout;
-import java.awt.RenderingHints;
 import java.awt.geom.Rectangle2D;
 import java.awt.geom.RoundRectangle2D;
 
@@ -17,9 +11,9 @@ import java.awt.geom.RoundRectangle2D;
 
 public class TitleBar extends javax.swing.JPanel {
 
-    Ventana ventana;
-    JLabel title;
-    JButton close;
+    private Ventana ventana;
+    private JLabel title;
+    private JButton close;
 
     public TitleBar(Ventana ventana) {
 
@@ -47,6 +41,9 @@ public class TitleBar extends javax.swing.JPanel {
         close.setBackground(Colors.RED);
         close.setFocusPainted(false);
         close.setBorderPainted(false);
+        close.setContentAreaFilled(false);
+        // Solo hasta implementar paint componet
+        close.setOpaque(true);
 
         // Adicion de componentes
         GridBagConstraints gbc = new GridBagConstraints();
