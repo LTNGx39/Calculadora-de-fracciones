@@ -23,10 +23,10 @@ public class FractionPanel extends javax.swing.JPanel {
         // Configuracion de componentes
         n1 = new CustomText(ventana, "1");
         n2 = new CustomText(ventana, "2");
-        n3 = new CustomText(ventana);
+        n3 = new CustomText(ventana, "3", false);
         d1 = new CustomText(ventana, "4");
         d2 = new CustomText(ventana, "5");
-        d3 = new CustomText(ventana);
+        d3 = new CustomText(ventana, "6", false);
 
         symbol = new Label("+");
         equal = new Label("=");
@@ -96,15 +96,15 @@ public class FractionPanel extends javax.swing.JPanel {
 
 class CustomText extends javax.swing.JTextField {
 
-    public CustomText(Ventana ventana) {
+    public CustomText(Ventana ventana, String text, Boolean editable) {
 
-        super();
+        super(text);
 
         setFont(new Font("Arial Nova", Font.BOLD, 32));
         setHorizontalAlignment(SwingConstants.CENTER);
         setForeground(Colors.WHITE);
         setBackground(Colors.BLACK);
-        setEditable(false);
+        setEditable(editable);
         setCaretColor(getBackground());
         setBorder(BorderFactory.createEmptyBorder());
         setOpaque(false);
