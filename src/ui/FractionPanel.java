@@ -2,6 +2,8 @@ package ui;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.*;
+import java.awt.event.KeyAdapter;
 import java.awt.geom.RoundRectangle2D;
 
 public class FractionPanel extends javax.swing.JPanel {
@@ -21,11 +23,11 @@ public class FractionPanel extends javax.swing.JPanel {
         setBackground(ventana.getBackground());
 
         // Configuracion de componentes
-        n1 = new CustomText(ventana, "1");
-        n2 = new CustomText(ventana, "2");
+        n1 = new CustomText(ventana, "1", true);
+        n2 = new CustomText(ventana, "2", true);
         n3 = new CustomText(ventana, "3", false);
-        d1 = new CustomText(ventana, "4");
-        d2 = new CustomText(ventana, "5");
+        d1 = new CustomText(ventana, "4", true);
+        d2 = new CustomText(ventana, "5", true);
         d3 = new CustomText(ventana, "6", false);
 
         symbol = new Label("+");
@@ -102,27 +104,34 @@ class CustomText extends javax.swing.JTextField {
 
         setFont(new Font("Arial Nova", Font.BOLD, 32));
         setHorizontalAlignment(SwingConstants.CENTER);
-        setForeground(Colors.WHITE);
-        setBackground(Colors.BLACK);
+
+        if (editable) {
+            setBackground(Colors.GRAY);
+            setCaretColor(Colors.WHITE);
+        } else {
+            setBackground(Colors.BLACK);
+            setCaretColor(getBackground());
+        }
+
         setEditable(editable);
-        setCaretColor(getBackground());
-        setBorder(BorderFactory.createEmptyBorder());
-        setOpaque(false);
-
-    }
-
-    public CustomText(Ventana ventana, String text) {
-
-        super(text);
-
-        setFont(new Font("Arial Nova", Font.BOLD, 32));
-        setHorizontalAlignment(SwingConstants.CENTER);
+        setSelectedTextColor(Colors.WHITE);
+        setSelectionColor(Colors.DARK_GRAY);
         setForeground(Colors.WHITE);
-        setBackground(Colors.GRAY);
-        setCaretColor(getForeground());
         setBorder(BorderFactory.createEmptyBorder());
         setOpaque(false);
 
+        addKeyListener(new KeyAdapter() { 
+            
+            @Override
+            public void keyTyped(KeyEvent e) {
+
+                char key = e.getKeyChar();
+                if (!Character.isDigit(key) || getText().length() >= 4) {
+                    e.consume();
+                }
+            }
+        });
+        
     }
 
     @Override
