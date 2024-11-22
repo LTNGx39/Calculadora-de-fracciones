@@ -20,7 +20,7 @@ public class FileLector extends javax.swing.JFrame {
         super();
         this.ventana = ventana;
         // Tamaño de pantalla
-        Dimension size = new Dimension(ventana.getWidth() / 3 * 2, ventana.getWidth() / 9);
+        Dimension size = new Dimension(ventana.getWidth() / 3 * 2, ventana.getWidth() / 7);
 
         // Configuracion de ventana
         setSize(size);
@@ -33,14 +33,14 @@ public class FileLector extends javax.swing.JFrame {
         // Configuracion de componentes
         text = new JLabel("Ingrese la ruta del archivo:") {
             {
-                setFont(new Font("Arial Nova", Font.BOLD, ventana.getWidth() / 40));
+                setFont(new Font("Arial Nova", Font.BOLD, ventana.getWidth() / 32));
                 setForeground(Colors.WHITE);
             }
         };
 
         location = new JTextField() {
             {
-                setFont(new Font("Arial Nova", Font.BOLD, ventana.getWidth() / 40));
+                setFont(new Font("Arial Nova", Font.BOLD, ventana.getWidth() / 32));
                 setEditable(true);
                 setSelectedTextColor(Colors.WHITE);
                 setSelectionColor(Colors.GRAY);
