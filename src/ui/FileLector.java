@@ -35,7 +35,6 @@ public class FileLector extends javax.swing.JFrame {
             {
                 setFont(new Font("Arial Nova", Font.BOLD, ventana.getWidth() / 40));
                 setForeground(Colors.WHITE);
-                setBorder(BorderFactory.createEmptyBorder());
             }
         };
 
