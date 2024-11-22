@@ -10,7 +10,7 @@ public class RoundPane extends javax.swing.JPanel {
 
         setSize(ventana.getWidth(), ventana.getHeight());
         setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
-        setBorder(BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        
 
     }
 

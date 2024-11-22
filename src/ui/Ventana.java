@@ -17,6 +17,7 @@ public class Ventana extends javax.swing.JFrame {
     // Constructor para la ventana
     public Ventana() {
 
+        super();
         // Tamaño de pantalla
         Dimension screen = Toolkit.getDefaultToolkit().getScreenSize();
         screen.setSize(screen.width / 3, screen.width / 4);

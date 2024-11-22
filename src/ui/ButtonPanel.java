@@ -86,7 +86,21 @@ public class ButtonPanel extends javax.swing.JPanel {
                 });
             }
         };
-        file = new CustomButton(ventana, "F");
+        file = new CustomButton(ventana, "F") {
+            {
+                addActionListener(new ActionListener() {
+                    
+                    @Override
+                    public void actionPerformed(ActionEvent e) {
+
+                        FileLector lector = new FileLector(ventana);
+                        lector.setVisible(true);
+
+                    }
+
+                });
+            }
+        };
 
         // Adicion de componentes
         add(plus);

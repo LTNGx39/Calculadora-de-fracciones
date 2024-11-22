@@ -116,8 +116,8 @@ class CustomText extends javax.swing.JTextField {
 
         super(text);
 
+        // Configuraciones
         setFont(new Font("Arial Nova", Font.BOLD, ventana.getWidth() / 20));
-        setHorizontalAlignment(SwingConstants.CENTER);
 
         if (editable) {
             setBackground(Colors.GRAY);
