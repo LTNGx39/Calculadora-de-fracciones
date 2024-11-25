@@ -53,9 +53,9 @@ public class Fraction {
 
     public boolean valid() {
         if (this.denominator == 0) {
-            return false;
+            return true;
         }
-        return true;
+        return false;
     }
 
     public Integer checkZero(Fraction fraction) {
