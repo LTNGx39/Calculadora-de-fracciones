@@ -236,7 +236,7 @@ class CustomText extends javax.swing.JTextField {
                     }
 
                     // Opera las fracciones y asigna a la 3ra
-                    if (opera.valid()) {
+                    if (opera.valid() || (opera.getNumerator() == 0 && opera.getDenominator() == 0)) {
                         ventana.getFractionPanel().getN3().setText("O_o");
                         ventana.getFractionPanel().getD3().setText("Error");
                     } else {
