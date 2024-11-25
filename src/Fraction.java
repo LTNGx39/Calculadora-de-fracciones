@@ -23,7 +23,8 @@ public class Fraction {
         this.denominator = denominator;
     }
 
-    public Fraction simplify(Fraction fraction) {
+    public Fraction simplify() { // Simplificar fracción con los datos que tenga actualmente
+        Fraction fraction = new Fraction(this.numerator, this.denominator);
         int gcd = this.gcd(fraction.getNumerator(), fraction.getDenominator());
         fraction.setNumerator(fraction.getNumerator() / gcd);
         fraction.setDenominator(fraction.getDenominator() / gcd);
