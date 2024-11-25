@@ -1,4 +1,7 @@
+package logic;
+
 public class Fraction {
+
     private Integer numerator;
     private Integer denominator;
 

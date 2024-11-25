@@ -1,4 +1,7 @@
+package logic;
+
 public class Fractions {
+    
     protected int numerator;
     protected int denominator;
 
@@ -7,5 +10,12 @@ public class Fractions {
         this.denominator = denominator;
     }
 
+    public int getNumerator() {
+        return numerator;
+    }
+
+    public int getDenominator() {
+        return denominator;
+    }
     
 }

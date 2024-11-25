@@ -1,6 +1,10 @@
 package ui;
 
 import javax.swing.*;
+
+import logic.Fraction;
+import logic.Fractions;
+
 import java.awt.*;
 import java.awt.RenderingHints.Key;
 import java.awt.event.*;
@@ -12,6 +16,9 @@ public class FractionPanel extends javax.swing.JPanel {
     private Ventana ventana;
     private CustomText n1, d1, n2, d2, n3, d3;
     private JLabel symbol, equal;
+
+    // Values
+    private Fractions fraction1, fraction2, fraction3;
 
     public FractionPanel(Ventana ventana) {
 
@@ -25,12 +32,19 @@ public class FractionPanel extends javax.swing.JPanel {
         setBackground(ventana.getBackground());
 
         // Configuracion de componentes
-        n1 = new CustomText(ventana, "1", true);
-        n2 = new CustomText(ventana, "2", true);
-        n3 = new CustomText(ventana, "3", false);
-        d1 = new CustomText(ventana, "4", true);
-        d2 = new CustomText(ventana, "5", true);
-        d3 = new CustomText(ventana, "6", false);
+        n1 = new CustomText(ventana, "1", true, 'N', fraction1);
+        n2 = new CustomText(ventana, "2", true, 'N', fraction2);
+        n3 = new CustomText(ventana, "3", false, 'N', fraction3);
+        d1 = new CustomText(ventana, "4", true, 'D', fraction1);
+        d2 = new CustomText(ventana, "5", true, 'D', fraction2);
+        d3 = new CustomText(ventana, "6", false, 'D', fraction3);
+
+        n1.setPair(d1);
+        n2.setPair(d2);
+        n3.setPair(d3);
+        d1.setPair(n1);
+        d2.setPair(n2);
+        d3.setPair(n3);
 
         symbol = new JLabel("+");
         symbol.setFont(new Font("Arial Nova", Font.BOLD, ventana.getWidth() / 14));
@@ -102,6 +116,20 @@ public class FractionPanel extends javax.swing.JPanel {
 
     }
 
+    public Fractions getFraction3() {
+        return fraction3;
+    }
+
+    public void setFraction3(Fractions fraction) {
+
+        fraction3 = fraction;
+        n3.setText("" + fraction.getNumerator());
+        n3.setValue(fraction.getNumerator());
+        d3.setText("" + fraction.getDenominator());
+        d3.setValue(fraction.getDenominator());
+
+    }
+
     public JLabel getSymbol() {
         return symbol;
     }
@@ -112,9 +140,17 @@ public class FractionPanel extends javax.swing.JPanel {
 
 class CustomText extends javax.swing.JTextField {
 
-    public CustomText(Ventana ventana, String text, Boolean editable) {
+    private int value;
+    private char type;
+    private CustomText pair;
+    private Fractions fraction;
+
+    public CustomText(Ventana ventana, String text, Boolean editable, char type, Fractions fraction) {
 
         super(text);
+        this.type = type;
+        this.fraction = fraction;
+        value = Integer.parseInt(text);
 
         // Configuraciones
         setFont(new Font("Arial Nova", Font.BOLD, ventana.getWidth() / 20));
@@ -141,16 +177,62 @@ class CustomText extends javax.swing.JTextField {
             public void keyTyped(KeyEvent e) {
 
                 char key = e.getKeyChar();
-                if (!Character.isDigit(key)) {
+
+                if (key == '\n' && !getText().equals("")) {
+
+                    // Asigna la fraccion
+                    value = Integer.parseInt(getText());
+                    setFraction(pair, fraction);
+
+                    // Busca la operacion
+                    char simbolo = ventana.getFractionPanel().getSymbol().getText().charAt(0);
+                    
+                    if (simbolo == '+') {
+                        System.out.println("mas");
+                    } else if (simbolo == '−') {
+                        System.out.println("menos");
+                    } else if (simbolo == '×') {
+                        System.out.println("equis");
+                    } else {
+                        System.out.println("div");
+                    }
+
+                    // Opera las fracciones y asigna a la 3ra
+                    ventana.getFractionPanel().setFraction3(new Fractions(40, 32));
+
+                } else if (!Character.isDigit(key)) {
                     e.consume();
                     System.err.println("Se ingreso un caracter no numerico");
                 } else if (getText().length() >= 4) {
                     e.consume();
                     System.err.println("Se ingreso un numero muy grande");
                 }
+
             }
         });
         
+    }
+
+    public void setPair(CustomText pair) {
+        this.pair = pair;
+    }
+
+    public int getValue() {
+        return value;
+    }
+
+    public void setValue(int value) {
+        this.value = value;
+    }
+
+    public void setFraction(CustomText pair, Fractions fraction) {
+
+        if (type == 'N') {
+            fraction = new Fractions(value, pair.getValue());
+        } else {
+            fraction = new Fractions(pair.getValue(), value);
+        }
+
     }
 
     @Override
