@@ -1,11 +1,15 @@
 package ui;
 
 import javax.swing.*;
+
+import logic.FraccionReader;
+
 import java.awt.*;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.geom.*;
+import java.io.IOException;
 
 public class FileLector extends javax.swing.JFrame {
     
@@ -57,6 +61,14 @@ public class FileLector extends javax.swing.JFrame {
                         if (e.getKeyChar() == '\n') {
                             rute = getText();
                             dispose();
+
+                            try {
+                                FraccionReader.procesarArchivo(rute);
+                                ventana.getFractionPanel().getN3().setText("" + FraccionReader.resultado.getNumerator());
+                                ventana.getFractionPanel().getD3().setText("" + FraccionReader.resultado.getDenominator());
+                            } catch (IOException e1) {
+                                System.err.println("Archivo no encontrado");
+                            }
                         }
 
                     }

@@ -152,6 +152,14 @@ public class FractionPanel extends javax.swing.JPanel {
         return symbol;
     }
 
+    public CustomText getN3() {
+        return n3;
+    }
+
+    public CustomText getD3() {
+        return d3;
+    }
+
 }
 
 // Clase CustomText
@@ -228,7 +236,12 @@ class CustomText extends javax.swing.JTextField {
                     }
 
                     // Opera las fracciones y asigna a la 3ra
-                    ventana.getFractionPanel().setFraction3(opera);
+                    if (opera.valid()) {
+                        ventana.getFractionPanel().getN3().setText("O_o");
+                        ventana.getFractionPanel().getD3().setText("Error");
+                    } else {
+                        ventana.getFractionPanel().setFraction3(opera);
+                    }
 
                 } else if (!Character.isDigit(key)) {
                     e.consume();

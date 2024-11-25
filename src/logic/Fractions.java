@@ -29,4 +29,5 @@ public class Fractions {
         result.denominator = fractionA.denominator * fractionB.numerator;
         return result.simplify();
     }
+
 }
