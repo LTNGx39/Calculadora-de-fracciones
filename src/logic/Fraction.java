@@ -25,12 +25,20 @@ public class Fraction {
         this.denominator = denominator;
     }
 
-    public Fraction simplify() { // Simplificar fracción con los datos que tenga actualmente
-        Fraction fraction = new Fraction(this.numerator, this.denominator);
-        int gcd = this.gcd(fraction.getNumerator(), fraction.getDenominator());
-        fraction.setNumerator(fraction.getNumerator() / gcd);
-        fraction.setDenominator(fraction.getDenominator() / gcd);
-        return fraction;
+    public Fraction simplify() throws ArithmeticException{ // Simplificar fracción con los datos que tenga actualmente
+
+        Fraction fraction = new Fraction(0, 0);
+        try {
+            fraction = new Fraction(this.numerator, this.denominator);
+            int gcd = this.gcd(fraction.getNumerator(), fraction.getDenominator());
+            fraction.setNumerator(fraction.getNumerator() / gcd);
+            fraction.setDenominator(fraction.getDenominator() / gcd);
+            return fraction;
+        } catch (ArithmeticException e) {
+            return fraction;
+        }
+        
+
     }
 
     private int gcd(int a, int b) {
