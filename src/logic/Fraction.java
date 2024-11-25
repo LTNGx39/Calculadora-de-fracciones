@@ -41,6 +41,13 @@ public class Fraction {
     }
 
     public String toString(boolean sign, boolean parenthesis) {
-        return this.numerator + "/" + this.denominator;
+        String fraction = this.numerator + " / " + this.denominator;
+        if(sign){
+            fraction = "-" + fraction;
+        }
+        if (parenthesis) {
+            fraction = "(" + fraction + ")";
+        }
+        return fraction;
     }
 }
