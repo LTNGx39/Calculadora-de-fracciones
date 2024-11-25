@@ -10,7 +10,6 @@ public class Fractions {
         this.denominator = denominator;
     }
 
-<<<<<<< HEAD:src/logic/Fractions.java
     public int getNumerator() {
         return numerator;
     }
@@ -18,13 +17,11 @@ public class Fractions {
     public int getDenominator() {
         return denominator;
     }
-    
-=======
-    public Fraction add(Fraction fractionA, Fraction fractionB) {
+
+    public Fraction suma(Fraction fractionA, Fraction fractionB) {
         Fraction result = new Fraction(0, 0);
         result.numerator = fractionA.numerator * fractionB.denominator + fractionB.numerator * fractionA.denominator;
         result.denominator = fractionA.denominator * fractionB.denominator;
         return result;
     }
->>>>>>> 369a47b (ready add method):src/Fractions.java
 }

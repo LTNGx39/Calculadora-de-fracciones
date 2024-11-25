@@ -1,11 +1,6 @@
 package logic;
 
 public class Fraction {
-<<<<<<< HEAD:src/logic/Fraction.java
-
-    private Integer numerator;
-    private Integer denominator;
-=======
     public Integer numerator;
     public Integer denominator;
 
@@ -13,7 +8,6 @@ public class Fraction {
         this.numerator = numerator;
         this.denominator = denominator;
     }
->>>>>>> 369a47b (ready add method):src/Fraction.java
 
     public Integer getNumerator() {
         return this.numerator;

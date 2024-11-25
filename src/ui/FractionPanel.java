@@ -116,6 +116,14 @@ public class FractionPanel extends javax.swing.JPanel {
 
     }
 
+    public Fractions getFraction1() {
+        return fraction1;
+    }
+
+    public Fractions getFraction2() {
+        return fraction2;
+    }
+
     public Fractions getFraction3() {
         return fraction3;
     }
@@ -189,6 +197,7 @@ class CustomText extends javax.swing.JTextField {
                     
                     if (simbolo == '+') {
                         System.out.println("mas");
+                        ventana.getFractionPanel().setFraction3(Fractions.add(ventana.getFractionPanel().getFraction1(), ventana.getFractionPanel().getFraction2()));
                     } else if (simbolo == '−') {
                         System.out.println("menos");
                     } else if (simbolo == '×') {
