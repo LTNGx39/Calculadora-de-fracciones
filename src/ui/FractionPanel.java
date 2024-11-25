@@ -18,7 +18,9 @@ public class FractionPanel extends javax.swing.JPanel {
     private JLabel symbol, equal;
 
     // Values
-    private Fractions fraction1, fraction2, fraction3;
+    private Fraction fraction1 = new Fraction(1, 1);
+    private Fraction fraction2 = new Fraction(1, 1);
+    private Fraction fraction3 = new Fraction(1, 1);
 
     public FractionPanel(Ventana ventana) {
 
@@ -116,19 +118,19 @@ public class FractionPanel extends javax.swing.JPanel {
 
     }
 
-    public Fractions getFraction1() {
+    public Fraction getFraction1() {
         return fraction1;
     }
 
-    public Fractions getFraction2() {
+    public Fraction getFraction2() {
         return fraction2;
     }
 
-    public Fractions getFraction3() {
+    public Fraction getFraction3() {
         return fraction3;
     }
 
-    public void setFraction3(Fractions fraction) {
+    public void setFraction3(Fraction fraction) {
 
         fraction3 = fraction;
         n3.setText("" + fraction.getNumerator());
@@ -151,9 +153,9 @@ class CustomText extends javax.swing.JTextField {
     private int value;
     private char type;
     private CustomText pair;
-    private Fractions fraction;
+    private Fraction fraction;
 
-    public CustomText(Ventana ventana, String text, Boolean editable, char type, Fractions fraction) {
+    public CustomText(Ventana ventana, String text, Boolean editable, char type, Fraction fraction) {
 
         super(text);
         this.type = type;
@@ -195,19 +197,28 @@ class CustomText extends javax.swing.JTextField {
                     // Busca la operacion
                     char simbolo = ventana.getFractionPanel().getSymbol().getText().charAt(0);
                     
+                    Fraction opera = new Fraction(0, 0);
                     if (simbolo == '+') {
+
                         System.out.println("mas");
-                        ventana.getFractionPanel().setFraction3(Fractions.add(ventana.getFractionPanel().getFraction1(), ventana.getFractionPanel().getFraction2()));
+                        opera = Fractions.suma(ventana.getFractionPanel().getFraction1(), ventana.getFractionPanel().getFraction2());
+
                     } else if (simbolo == '−') {
+
                         System.out.println("menos");
+
                     } else if (simbolo == '×') {
+
                         System.out.println("equis");
+
                     } else {
+
                         System.out.println("div");
+                        
                     }
 
                     // Opera las fracciones y asigna a la 3ra
-                    ventana.getFractionPanel().setFraction3(new Fractions(40, 32));
+                    ventana.getFractionPanel().setFraction3(opera);
 
                 } else if (!Character.isDigit(key)) {
                     e.consume();
@@ -234,12 +245,12 @@ class CustomText extends javax.swing.JTextField {
         this.value = value;
     }
 
-    public void setFraction(CustomText pair, Fractions fraction) {
+    public void setFraction(CustomText pair, Fraction fraction) {
 
         if (type == 'N') {
-            fraction = new Fractions(value, pair.getValue());
+            fraction = new Fraction(value, pair.getValue());
         } else {
-            fraction = new Fractions(pair.getValue(), value);
+            fraction = new Fraction(pair.getValue(), value);
         }
 
     }
