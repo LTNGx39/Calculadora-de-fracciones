@@ -217,14 +217,17 @@ class CustomText extends javax.swing.JTextField {
                     } else if (simbolo == '−') {
 
                         System.out.println("menos");
+                        opera = Fractions.restas(ventana.getFractionPanel().getFraction1(), ventana.getFractionPanel().getFraction2());
 
                     } else if (simbolo == '×') {
 
                         System.out.println("equis");
+                        opera = Fractions.division(ventana.getFractionPanel().getFraction1(), ventana.getFractionPanel().getFraction2());
 
                     } else {
 
                         System.out.println("div");
+                        opera = Fractions.multiplicacion(ventana.getFractionPanel().getFraction1(), ventana.getFractionPanel().getFraction2());
 
                     }
 
