@@ -8,7 +8,6 @@ import logic.Fractions;
 import java.awt.*;
 import java.awt.RenderingHints.Key;
 import java.awt.event.*;
-import java.awt.event.KeyAdapter;
 import java.awt.geom.RoundRectangle2D;
 
 public class FractionPanel extends javax.swing.JPanel {
@@ -150,6 +149,22 @@ public class FractionPanel extends javax.swing.JPanel {
 
     public JLabel getSymbol() {
         return symbol;
+    }
+
+    public CustomText getN1() {
+        return n1;
+    }
+
+    public CustomText getD1() {
+        return d1;
+    }
+
+    public CustomText getN2() {
+        return n2;
+    }
+
+    public CustomText getD2() {
+        return d2;
     }
 
     public CustomText getN3() {

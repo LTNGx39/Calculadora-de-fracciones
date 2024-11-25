@@ -63,9 +63,37 @@ public class FileLector extends javax.swing.JFrame {
                             dispose();
 
                             try {
+
                                 FraccionReader.procesarArchivo(rute);
+
+                                ventana.getFractionPanel().getN1().setText("" + FraccionReader.fraccion1.getNumerator());
+                                ventana.getFractionPanel().getN1().setValue(FraccionReader.fraccion1.getNumerator());
+                                ventana.getFractionPanel().getD1().setText("" + FraccionReader.fraccion1.getDenominator());
+                                ventana.getFractionPanel().getD1().setValue(FraccionReader.fraccion1.getDenominator());
+                                ventana.getFractionPanel().setFraction1(FraccionReader.fraccion1);
+
+                                ventana.getFractionPanel().getN2().setText("" + FraccionReader.fraccion2.getNumerator());
+                                ventana.getFractionPanel().getN2().setValue(FraccionReader.fraccion2.getNumerator());
+                                ventana.getFractionPanel().getD2().setText("" + FraccionReader.fraccion2.getDenominator());
+                                ventana.getFractionPanel().getD2().setValue(FraccionReader.fraccion2.getDenominator());
+                                ventana.getFractionPanel().setFraction2(FraccionReader.fraccion2);
+
+                                char symbol = ' ';
+                                if (FraccionReader.operador.charAt(0) == '+') {
+                                    symbol = '+';
+                                } else if (FraccionReader.operador.charAt(0) == '-') {
+                                    symbol = '−';
+                                } else if (FraccionReader.operador.charAt(0) == 'x') {
+                                    symbol = '×';
+                                } else {
+                                    symbol = '÷';
+                                }
+                                ventana.getFractionPanel().getSymbol().setText("" + symbol);
+                                ventana.repaint();
+
                                 ventana.getFractionPanel().getN3().setText("" + FraccionReader.resultado.getNumerator());
                                 ventana.getFractionPanel().getD3().setText("" + FraccionReader.resultado.getDenominator());
+
                             } catch (IOException e1) {
                                 System.err.println("Archivo no encontrado");
                             }

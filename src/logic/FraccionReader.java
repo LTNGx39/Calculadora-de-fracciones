@@ -5,6 +5,9 @@ import java.nio.file.*;
 
 public class FraccionReader {
 
+    public static Fraction fraccion1;
+    public static Fraction fraccion2;
+    public static String operador;
     public static Fraction resultado;
 
     // Método estático para leer y procesar el archivo
@@ -20,9 +23,9 @@ public class FraccionReader {
         for (String linea : lineas) {
 
             String[] partes = linea.split(" ");
-            Fraction fraccion1 = parsearFraccion(partes[0]);
-            Fraction fraccion2 = parsearFraccion(partes[2]);
-            String operador = partes[1];
+            fraccion1 = parsearFraccion(partes[0]);
+            fraccion2 = parsearFraccion(partes[2]);
+            operador = partes[1];
 
             // Operar las fracciones según el operador
             switch (operador) {
