@@ -211,23 +211,19 @@ class CustomText extends javax.swing.JTextField {
                     Fraction opera = new Fraction(0, 0);
                     if (simbolo == '+') {
 
-                        System.out.println("mas");
                         opera = Fractions.suma(ventana.getFractionPanel().getFraction1(), ventana.getFractionPanel().getFraction2());
 
                     } else if (simbolo == '−') {
 
-                        System.out.println("menos");
-                        opera = Fractions.restas(ventana.getFractionPanel().getFraction1(), ventana.getFractionPanel().getFraction2());
+                        opera = Fractions.resta(ventana.getFractionPanel().getFraction1(), ventana.getFractionPanel().getFraction2());
 
                     } else if (simbolo == '×') {
 
-                        System.out.println("equis");
-                        opera = Fractions.division(ventana.getFractionPanel().getFraction1(), ventana.getFractionPanel().getFraction2());
+                        opera = Fractions.multiplicacion(ventana.getFractionPanel().getFraction1(), ventana.getFractionPanel().getFraction2());
 
                     } else {
 
-                        System.out.println("div");
-                        opera = Fractions.multiplicacion(ventana.getFractionPanel().getFraction1(), ventana.getFractionPanel().getFraction2());
+                        opera = Fractions.division(ventana.getFractionPanel().getFraction1(), ventana.getFractionPanel().getFraction2());
 
                     }
 
