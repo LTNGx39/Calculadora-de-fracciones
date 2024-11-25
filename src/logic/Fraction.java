@@ -51,11 +51,11 @@ public class Fraction {
         return fraction;
     }
 
-    public boolean valid(Fraction fraction) {
-        if (fraction.denominator == 0) {
-            return false;
+    public boolean valid() {
+        if (this.denominator == 0) {
+            return true;
         }
-        return true;
+        return false;
     }
 
     public Integer checkZero(Fraction fraction) {
