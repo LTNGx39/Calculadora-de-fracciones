@@ -51,8 +51,8 @@ public class Fraction {
         return fraction;
     }
 
-    public boolean valid(Fraction fraction) {
-        if (fraction.denominator == 0) {
+    public boolean valid() {
+        if (this.denominator == 0) {
             return false;
         }
         return true;
