@@ -222,7 +222,7 @@ class CustomText extends javax.swing.JTextField {
 
                 char key = e.getKeyChar();
 
-                if (key == '\n' && !getText().equals("")) {
+                if (key == '\n' && !getText().equals("") && !pair.getText().equals("")) {
 
                     // Asigna la fraccion
                     value = Integer.parseInt(getText());
@@ -258,12 +258,14 @@ class CustomText extends javax.swing.JTextField {
                         ventana.getFractionPanel().setFraction3(opera);
                     }
 
-                } else if (!Character.isDigit(key)) {
+                } else if (!Character.isDigit(key) && key != '\n') {
                     e.consume();
                     System.err.println("Se ingreso un caracter no numerico");
                 } else if (getText().length() >= 4) {
                     e.consume();
                     System.err.println("Se ingreso un numero muy grande");
+                } else if (pair.getText().equals("")) {
+                    System.err.println("Fraccion invalida");
                 }
 
             }
