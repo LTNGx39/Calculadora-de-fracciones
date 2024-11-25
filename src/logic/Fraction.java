@@ -58,10 +58,10 @@ public class Fraction {
         return false;
     }
 
-    public Integer checkZero(Fraction fraction) {
+    public boolean checkZero(Fraction fraction) {
         if (fraction.numerator == 0) {
-            return 1;
+            return true;
         }
-        return 0;
+        return false;
     }
 }
