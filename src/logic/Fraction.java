@@ -50,4 +50,18 @@ public class Fraction {
         }
         return fraction;
     }
+
+    public boolean valid(Fraction fraction) {
+        if (fraction.denominator == 0) {
+            return false;
+        }
+        return true;
+    }
+
+    public Integer checkZero(Fraction fraction) {
+        if (fraction.numerator == 0) {
+            return 1;
+        }
+        return 0;
+    }
 }
