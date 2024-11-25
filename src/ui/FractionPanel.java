@@ -18,8 +18,8 @@ public class FractionPanel extends javax.swing.JPanel {
     private JLabel symbol, equal;
 
     // Values
-    private Fraction fraction1 = new Fraction(1, 1);
-    private Fraction fraction2 = new Fraction(1, 1);
+    private Fraction fraction1 = new Fraction(1, 2);
+    private Fraction fraction2 = new Fraction(2, 4);
     private Fraction fraction3 = new Fraction(1, 1);
 
     public FractionPanel(Ventana ventana) {
@@ -34,12 +34,12 @@ public class FractionPanel extends javax.swing.JPanel {
         setBackground(ventana.getBackground());
 
         // Configuracion de componentes
-        n1 = new CustomText(ventana, "1", true, 'N', fraction1);
-        n2 = new CustomText(ventana, "2", true, 'N', fraction2);
-        n3 = new CustomText(ventana, "3", false, 'N', fraction3);
-        d1 = new CustomText(ventana, "4", true, 'D', fraction1);
-        d2 = new CustomText(ventana, "5", true, 'D', fraction2);
-        d3 = new CustomText(ventana, "6", false, 'D', fraction3);
+        n1 = new CustomText(ventana, "1", true, 'N', 1);
+        n2 = new CustomText(ventana, "2", true, 'N',  2);
+        n3 = new CustomText(ventana, "1", false, 'N',  3);
+        d1 = new CustomText(ventana, "2", true, 'D',  1);
+        d2 = new CustomText(ventana, "4", true, 'D',  2);
+        d3 = new CustomText(ventana, "1", false, 'D',  3);
 
         n1.setPair(d1);
         n2.setPair(d2);
@@ -118,6 +118,14 @@ public class FractionPanel extends javax.swing.JPanel {
 
     }
 
+    public void setFraction1(Fraction value) {
+        fraction1 = value;
+    }
+
+    public void setFraction2(Fraction value) {
+        fraction2 = value;
+    }
+
     public Fraction getFraction1() {
         return fraction1;
     }
@@ -150,16 +158,19 @@ public class FractionPanel extends javax.swing.JPanel {
 
 class CustomText extends javax.swing.JTextField {
 
+    private Ventana ventana;
+
     private int value;
     private char type;
     private CustomText pair;
-    private Fraction fraction;
+    private int number = 0;
 
-    public CustomText(Ventana ventana, String text, Boolean editable, char type, Fraction fraction) {
+    public CustomText(Ventana ventana, String text, Boolean editable, char type, int number) {
 
         super(text);
+        this.ventana = ventana;
         this.type = type;
-        this.fraction = fraction;
+        this.number = number;
         value = Integer.parseInt(text);
 
         // Configuraciones
@@ -192,7 +203,7 @@ class CustomText extends javax.swing.JTextField {
 
                     // Asigna la fraccion
                     value = Integer.parseInt(getText());
-                    setFraction(pair, fraction);
+                    setFraction(pair, number);
 
                     // Busca la operacion
                     char simbolo = ventana.getFractionPanel().getSymbol().getText().charAt(0);
@@ -206,15 +217,18 @@ class CustomText extends javax.swing.JTextField {
                     } else if (simbolo == '−') {
 
                         System.out.println("menos");
+                        opera = Fractions.restas(ventana.getFractionPanel().getFraction1(), ventana.getFractionPanel().getFraction2());
 
                     } else if (simbolo == '×') {
 
                         System.out.println("equis");
+                        opera = Fractions.division(ventana.getFractionPanel().getFraction1(), ventana.getFractionPanel().getFraction2());
 
                     } else {
 
                         System.out.println("div");
-                        
+                        opera = Fractions.multiplicacion(ventana.getFractionPanel().getFraction1(), ventana.getFractionPanel().getFraction2());
+
                     }
 
                     // Opera las fracciones y asigna a la 3ra
@@ -245,13 +259,24 @@ class CustomText extends javax.swing.JTextField {
         this.value = value;
     }
 
-    public void setFraction(CustomText pair, Fraction fraction) {
+    public void setFraction(CustomText pair, int id) {
+
+        Fraction fraction;
 
         if (type == 'N') {
             fraction = new Fraction(value, pair.getValue());
         } else {
             fraction = new Fraction(pair.getValue(), value);
         }
+
+        if (id == 1) {
+            ventana.getFractionPanel().setFraction1(fraction);
+        } else {
+            ventana.getFractionPanel().setFraction2(fraction);
+        }
+        // System.out.println(fraction.getNumerator() + " : " + fraction.getDenominator());
+        System.out.println(ventana.getFractionPanel().getFraction1().getNumerator() + " : " + ventana.getFractionPanel().getFraction1().getDenominator());
+        System.out.println(ventana.getFractionPanel().getFraction2().getNumerator() + " : " + ventana.getFractionPanel().getFraction2().getDenominator());
 
     }
 
